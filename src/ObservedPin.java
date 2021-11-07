@@ -33,7 +33,7 @@ public class ObservedPin {
         }
 
         try{
-            possibleCombination(observed,0,0);
+            possibleCombination(observed.trim(),0,0);
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -41,6 +41,8 @@ public class ObservedPin {
         for(int i=0;i<getPins.size();i++){
             System.out.print(getPins.get(i)+",");
         }
+
+        //System.out.println("\n"+getPins.size());
 
         return getPins;
     } // getPINs
@@ -51,8 +53,10 @@ public class ObservedPin {
         if(i == observed.length()-1){
             for(int j=0;j< myArray[num].length;j++){
                 current+=(String.valueOf(myArray[num][j]));
-                    getPins.add(current);
-                    current = current.substring(0,current.length()-1);
+                    if(current.length() == observed.length()){
+                        getPins.add(current);
+                        current = current.substring(0,current.length()-1);
+                    }
             }
             return "";
         }
